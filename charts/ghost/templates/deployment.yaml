@@ -11,7 +11,7 @@ spec:
   {{- if .Values.strategy }}
   strategy: {{- toYaml .Values.strategy | nindent 4 }}
   {{- end }}   
-  template:
+    template:
     metadata:
       labels: {{- include "common.labels.standard" . | nindent 8 }}
     {{- if .Values.podAnnotations }}
@@ -113,7 +113,7 @@ spec:
               value: {{ .Values.smtpService | quote }}
             {{- end }}
             {{- if .Values.extraEnvVars }}
-            {{- include "common.tplvalues.render" ( dict "value" .Values.extraEnvVars "context" $ ) | nindent 10 }}
+            {{- include "common.tplvalues.render" ( dict "value" .Values.extraEnvVars "context" $ ) | nindent 12 }}
             {{- end }}
           {{- if or .Values.extraEnvVarsConfigMap .Values.extraEnvVarsSecret }}
           envFrom:
@@ -138,10 +138,8 @@ spec:
                 - name: Host
                   value: {{ include "ghost.host" . | quote }}
                 {{- if eq .Values.ghostProtocol "https" }}
-                {{- if not .Values.ingress.enabled }}
                 - name: X-Forwarded-Proto
                   value: https
-                {{- end }}
                 {{- end }}
             initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds }}
             periodSeconds: {{ .Values.livenessProbe.periodSeconds }}
@@ -158,10 +156,8 @@ spec:
                 - name: Host
                   value: {{ include "ghost.host" . | quote }}
                 {{- if eq .Values.ghostProtocol "https" }}
-                {{- if not .Values.ingress.enabled }}
                 - name: X-Forwarded-Proto
                   value: https
-                {{- end }}
                 {{- end }}
             initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
             periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
