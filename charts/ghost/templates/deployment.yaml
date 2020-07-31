@@ -11,7 +11,7 @@ spec:
   {{- if .Values.strategy }}
   strategy: {{- toYaml .Values.strategy | nindent 4 }}
   {{- end }}   
-    template:
+  template:
     metadata:
       labels: {{- include "common.labels.standard" . | nindent 8 }}
     {{- if .Values.podAnnotations }}
