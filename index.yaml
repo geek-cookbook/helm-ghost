@@ -3,6 +3,46 @@ entries:
   ghost:
   - annotations:
       category: CMS
+    apiVersion: v2
+    appVersion: 3.38.3
+    created: "2020-11-29T22:11:45.134545386Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - bitnami-common
+      version: 1.x.x
+    - condition: mariadb.enabled
+      name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - ghost-database
+      version: 9.x.x
+    description: A simple, powerful publishing platform that allows you to share your
+      stories with the world
+    digest: cc60d2b79599d8fd77a947dcead9225b32785e3395fd029874ad8bb2714a7bd2
+    home: https://github.com/bitnami/charts/tree/master/bitnami/ghost
+    icon: https://bitnami.com/assets/stacks/ghost/img/ghost-stack-220x234.png
+    keywords:
+    - ghost
+    - blog
+    - http
+    - web
+    - application
+    - nodejs
+    - javascript
+    maintainers:
+    - email: containers@bitnami.com
+      name: Bitnami
+    name: ghost
+    sources:
+    - https://github.com/bitnami/bitnami-docker-ghost
+    - http://www.ghost.org/
+    urls:
+    - https://github.com/geek-cookbook/helm-ghost/releases/download/ghost-11.1.1/ghost-11.1.1.tgz
+    version: 11.1.1
+  - annotations:
+      category: CMS
     apiVersion: v1
     appVersion: 3.25.0
     created: "2020-07-31T01:43:59.199906652Z"
